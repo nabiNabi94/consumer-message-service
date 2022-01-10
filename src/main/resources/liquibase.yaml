@@ -1,4 +1,4 @@
 driver: org.postgresql.Driver
-url: jdbc:postgresql://db:5432/kafka
+url: jdbc:postgresql://db:5432/kafka?createDatabaseIfNotExist=true
 username: postgres
 password: postgres
