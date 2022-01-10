@@ -1,0 +1,26 @@
+server:
+  port: 8082
+spring:
+  kafka:
+    consumer:
+      group-id: "my-group"
+      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    bootstrap-servers: ${kafka_bootstrap_servers:kafka:29092}
+  datasource:
+    url: jdbc:postgresql://db:5000/kafka
+    username: postgres
+    password: postgres
+
+  jpa:
+    show-sql: true
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQL94Dialect
+      ddl-auto: update
+    database: postgresql
+  liquibase:
+    change-log: classpath:db/changelog/changelog-master.xml
