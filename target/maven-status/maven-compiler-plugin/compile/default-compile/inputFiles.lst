@@ -1,0 +1,13 @@
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\entity\User.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\model\Answer.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\service\DBService.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\model\UserModel.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\configuration\ProducerFactories.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\service\KafkaProducer.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\ConsumerMessageServiceApplication.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\configuration\ConsumerFactories.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\entity\OrdersItem.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\reposirtories\UserRepository.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\model\OrdersModel.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\service\KafkaConsumer.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\reposirtories\OrderRepository.java

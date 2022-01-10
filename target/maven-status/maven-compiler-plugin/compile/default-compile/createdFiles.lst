@@ -1,0 +1,13 @@
+ru\digitalleague\backend\consumermessageservice\service\KafkaConsumer.class
+ru\digitalleague\backend\consumermessageservice\reposirtories\UserRepository.class
+ru\digitalleague\backend\consumermessageservice\entity\OrdersItem.class
+ru\digitalleague\backend\consumermessageservice\ConsumerMessageServiceApplication.class
+ru\digitalleague\backend\consumermessageservice\model\OrdersModel.class
+ru\digitalleague\backend\consumermessageservice\service\KafkaProducer.class
+ru\digitalleague\backend\consumermessageservice\reposirtories\OrderRepository.class
+ru\digitalleague\backend\consumermessageservice\configuration\ProducerFactories.class
+ru\digitalleague\backend\consumermessageservice\service\DBService.class
+ru\digitalleague\backend\consumermessageservice\entity\User.class
+ru\digitalleague\backend\consumermessageservice\configuration\ConsumerFactories.class
+ru\digitalleague\backend\consumermessageservice\model\UserModel.class
+ru\digitalleague\backend\consumermessageservice\model\Answer.class
