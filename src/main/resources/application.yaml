@@ -24,3 +24,11 @@ spring:
     database: postgresql
   liquibase:
     change-log: classpath:db/changelog/changelog-master.xml
+    url: jdbc:postgresql://db:5432/kafka
+    driverClassName: org.postgresql.Driver
+    user: postgres
+    password: postgres
+    dropFirst: false
+    default-schema: public
+    liquibase-schema: public
+    enabled: true
