@@ -12,7 +12,7 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     bootstrap-servers: ${kafka_bootstrap_servers:kafka:29092}
   datasource:
-    url: jdbc:postgresql://db:5000/kafka
+    url: jdbc:postgresql://db:5432/kafka
     username: postgres
     password: postgres
 
