@@ -5,8 +5,11 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import ru.digitalleague.backend.consumermessageservice.entity.OrdersItem;
 import ru.digitalleague.backend.consumermessageservice.entity.User;
+import ru.digitalleague.backend.consumermessageservice.model.OrdersModel;
+import ru.digitalleague.backend.consumermessageservice.model.UserModel;
 import ru.digitalleague.backend.consumermessageservice.reposirtories.OrderRepository;
 import ru.digitalleague.backend.consumermessageservice.reposirtories.UserRepository;
+import ru.digitalleague.backend.consumermessageservice.util.Mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -14,19 +17,21 @@ import java.util.stream.Collectors;
 
 @Service
 public class DBService {
+
     Logger LOG = LogManager.getLogger(DBService.class);
     private UserRepository userRepository;
     private OrderRepository orderRepository;
+    private Mapper mapper;
 
-
-    public DBService(UserRepository userRepository, OrderRepository orderRepository) {
+    public DBService(UserRepository userRepository, OrderRepository orderRepository, Mapper mapper) {
         this.userRepository = userRepository;
         this.orderRepository = orderRepository;
+        this.mapper = mapper;
     }
 
-    public  Map<Boolean, List<OrdersItem>> chekOrderStatus(User user) {
+    public  Map<Boolean, List<OrdersModel>> chekOrderStatus(UserModel user) {
 
-        Map<Boolean, List<OrdersItem>> result = user.getOrdersItems()
+        Map<Boolean, List<OrdersModel>> result = user.getOrdersItems()
                 .stream()
                 .collect(Collectors.partitioningBy(o -> o.getStatus().equals("paid") || o.getStatus().equals("send") || o.getStatus().equals("confirmed")));
         LOG.info("");
@@ -34,9 +39,13 @@ public class DBService {
 
     }
 
-    public void addUserToOrdersItemAndSavetoPostgres(User user, OrdersItem ordersItem) {
-        user.getOrdersItems().clear();
-            user.addOrder(ordersItem);
+    public void addUserToOrdersItemAndSavetoPostgres(UserModel userModel, OrdersModel ordersModel) {
+//        userModel.getOrdersItems().clear();
+            User user = new User();
+            user.setUserLastName(userModel.getUserLastName())
+                            .setUserFirstName(userModel.getUserFirstName())
+                                    .setOrdersItems(mapper.mapList(userModel.getOrdersItems(), OrdersItem.class));
+
             userRepository.save(user);
             LOG.info("Save to database user={}",user);
     }

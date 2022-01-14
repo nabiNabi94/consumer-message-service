@@ -12,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserModel {
-    private Long id;
     private String userFirstName;
     private String userLastName;
     private List<OrdersModel> ordersItems;

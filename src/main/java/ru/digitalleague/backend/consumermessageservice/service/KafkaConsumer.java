@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import ru.digitalleague.backend.consumermessageservice.entity.OrdersItem;
 import ru.digitalleague.backend.consumermessageservice.entity.User;
 import ru.digitalleague.backend.consumermessageservice.model.Answer;
+import ru.digitalleague.backend.consumermessageservice.model.OrdersModel;
+import ru.digitalleague.backend.consumermessageservice.model.UserModel;
 import ru.digitalleague.backend.consumermessageservice.reposirtories.OrderRepository;
 import ru.digitalleague.backend.consumermessageservice.reposirtories.UserRepository;
 import ru.digitalleague.backend.consumermessageservice.util.LocalDateAdapter;
@@ -48,15 +50,16 @@ public class KafkaConsumer{
                 .setPrettyPrinting()
                 .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
                 .create();
-        User user1 = gson.fromJson(record.value(), User.class);
-        User user = gson.fromJson(record.value(), User.class);
+        UserModel user1 = gson.fromJson(record.value(), UserModel.class);
+        UserModel user = gson.fromJson(record.value(), UserModel.class);
+
         LOG.info("Getting massages from kafka={}",record);
         String requestId = "";
         Long timestamp = record.timestamp();
         for (Header c : record.headers()) {
             requestId = new String(c.value());
         }
-        Map<Boolean, List<OrdersItem>> booleanListMap = dbService.chekOrderStatus(user);
+        Map<Boolean, List<OrdersModel>> booleanListMap = dbService.chekOrderStatus(user);
         String finalRequestId = requestId;
         booleanListMap.get(true)
                 .forEach(s -> {
@@ -64,9 +67,9 @@ public class KafkaConsumer{
                     try {
                         kafkaProducer.sendMessages(new Answer("OK", timestamp, finalRequestId, s.getUuid()));
                     } catch (ExecutionException e) {
-                        e.printStackTrace();
+                        LOG.trace("ExecutionException={}",e.getMessage());
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                       LOG.trace("InterruptedException={}",e.getMessage());
                     }
                 });
         booleanListMap.get(false)

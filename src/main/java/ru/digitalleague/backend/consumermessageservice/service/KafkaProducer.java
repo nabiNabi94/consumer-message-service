@@ -33,7 +33,7 @@ public class KafkaProducer {
     public String sendMessages(Answer answer) throws ExecutionException, InterruptedException {
         String answerToJson = gson.toJson(answer);
         ListenableFuture<SendResult<String, String>> answer1 = this.template.send(new ProducerRecord<String, String>(TOPIC,0,"answer", answerToJson));
-        LOG.info("Methot sendMessages sending answer in topic={} with value={} and future={}",TOPIC,answerToJson,answer1.get().getProducerRecord());
+        LOG.info("Method sendMessages sending answer in topic={} with value={} and future={}",TOPIC,answerToJson,answer1.get().getProducerRecord());
         return "OK";
     }
 }

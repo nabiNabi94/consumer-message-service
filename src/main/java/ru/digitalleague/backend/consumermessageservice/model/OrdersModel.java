@@ -12,7 +12,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrdersModel {
-    private Long id;
     private UUID uuid;
     private Long cost;
     private LocalDate dateCreate;

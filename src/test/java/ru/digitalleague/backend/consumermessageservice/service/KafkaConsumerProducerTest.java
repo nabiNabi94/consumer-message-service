@@ -86,11 +86,9 @@ public class KafkaConsumerProducerTest extends IntegrationTest {
         ordersModel
                 .setCost(1000L)
                 .setDateCreate(LocalDate.now())
-                .setId(1L)
                 .setStatus("paid")
                 .setUuid(UUID.randomUUID());
         userModel1
-                .setId(1L)
                 .setUserFirstName("Vlad")
                 .setUserLastName("Nabiev")
                 .setOrdersItems(ordersModelList);
@@ -164,7 +162,6 @@ public class KafkaConsumerProducerTest extends IntegrationTest {
                 .setStatus("confirmed")
                 .setUuid(UUID.randomUUID());
         userModel2
-                .setId(1L)
                 .setUserFirstName("Vlad")
                 .setUserLastName("Nabiev")
                 .setOrdersItems(ordersModelList);
@@ -216,13 +213,11 @@ public class KafkaConsumerProducerTest extends IntegrationTest {
         ordersModel1
                 .setCost(2000L)
                 .setDateCreate(LocalDate.now())
-                .setId(2L)
                 .setStatus("pay")
                 .setUuid(UUID.randomUUID());
         ordersModel2
                 .setCost(1500L)
                 .setDateCreate(LocalDate.now())
-                .setId(3L)
                 .setStatus("canceled")
                 .setUuid(UUID.randomUUID());
         userModel
