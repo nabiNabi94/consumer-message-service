@@ -1,5 +1,6 @@
 ru\digitalleague\backend\consumermessageservice\service\KafkaConsumer.class
 ru\digitalleague\backend\consumermessageservice\reposirtories\UserRepository.class
+ru\digitalleague\backend\consumermessageservice\util\LocalDateAdapter.class
 ru\digitalleague\backend\consumermessageservice\entity\OrdersItem.class
 ru\digitalleague\backend\consumermessageservice\ConsumerMessageServiceApplication.class
 ru\digitalleague\backend\consumermessageservice\model\OrdersModel.class

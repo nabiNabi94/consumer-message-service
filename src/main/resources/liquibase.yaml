@@ -1,4 +1,5 @@
 driver: org.postgresql.Driver
-url: jdbc:postgresql://db:5432/kafka
+#url: jdbc:postgresql://db:5432/postgres
+url: jdbc:tc:postgresql:12.9:///postgres
 username: postgres
 password: postgres

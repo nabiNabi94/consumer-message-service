@@ -11,10 +11,13 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     bootstrap-servers: ${kafka_bootstrap_servers:kafka:29092}
+    template:
+      default-topic: vn-project-in
   datasource:
     url: jdbc:postgresql://db:5432/postgres
     username: postgres
     password: postgres
+
 
   jpa:
     show-sql: true
@@ -24,7 +27,7 @@ spring:
     database: postgresql
   liquibase:
     change-log: classpath:db/changelog/changelog-master.xml
-    url: jdbc:postgresql://db:5432/postgres
+    url: jdbc:tc:postgresql:12.9:///postgres
     driverClassName: org.postgresql.Driver
     user: postgres
     password: postgres
@@ -32,3 +35,4 @@ spring:
     default-schema: public
     liquibase-schema: public
     enabled: true
+topicsOut: vn-project-out

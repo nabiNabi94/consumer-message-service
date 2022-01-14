@@ -1,14 +1,19 @@
 package ru.digitalleague.backend.consumermessageservice.model;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.digitalleague.backend.consumermessageservice.entity.OrdersItem;
+import lombok.experimental.Accessors;
+
 import java.util.List;
 
 @Data
+@Accessors(chain = true)
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserModel {
     private Long id;
     private String userFirstName;
     private String userLastName;
-    private List<OrdersItem> ordersItems;
+    private List<OrdersModel> ordersItems;
 }
