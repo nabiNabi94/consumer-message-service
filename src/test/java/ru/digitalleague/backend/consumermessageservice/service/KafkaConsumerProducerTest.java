@@ -115,9 +115,6 @@ public class KafkaConsumerProducerTest extends IntegrationTest {
                 LOG.info("Consumer getting massage='{}' equals sending massage={}",kafkaConsumer.getMessages(record).value(),testUserJson2
                 );});
 
-
-
-
     }
     @Test
     void integrationTestBusinessLogic() throws ExecutionException, InterruptedException {
@@ -172,9 +169,9 @@ public class KafkaConsumerProducerTest extends IntegrationTest {
                 .forEach(r -> kafkaConsumer.getMessages(r));
         List<OrdersItem> all = orderRepository.findAll();
 //        LOG.info("Comparing user from database={} and kafka user={}",user,userModel);
-        all.forEach(item -> {assertTrue(item.getStatus() !=
+        all.stream().filter(item -> item.getUsers()!= null).forEach(item -> {assertTrue(item.getStatus() !=
                 ordersModel3.getStatus() && item.getStatus() != ordersModel2.getStatus());
-        LOG.info("Status user from DB={}",item.getStatus());
+        LOG.info("Status user from DB={}",item);
         });
         consumerIn.close();
         consumerOut.subscribe(Collections.singletonList(TOPIC_OUT));
@@ -190,6 +187,7 @@ public class KafkaConsumerProducerTest extends IntegrationTest {
         long countAnswerFalse = mapAnswer.get(false).size();
         assertEquals(3L,countAnswerOK);
         assertEquals(2L,countAnswerFalse);
+        assertEquals(3,all.size());
         LOG.info("Count answered with status ok={} and status false={}",countAnswerOK,countAnswerFalse);
     }
     @Test

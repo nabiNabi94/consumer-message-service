@@ -6,6 +6,7 @@ C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend
 C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\configuration\ProducerFactories.java
 C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\service\KafkaProducer.java
 C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\ConsumerMessageServiceApplication.java
+C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\util\Mapper.java
 C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\configuration\ConsumerFactories.java
 C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\entity\OrdersItem.java
 C:\Users\vnabiev\consumer-message-service\src\main\java\ru\digitalleague\backend\consumermessageservice\reposirtories\UserRepository.java

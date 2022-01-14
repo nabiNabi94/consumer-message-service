@@ -34,7 +34,6 @@ public class IntegrationTest {
                     .withDatabaseName("postgres");
 
 
-
     @Container
     protected static KafkaContainer kafka =
             new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.0.0")).withReuse(true).withEmbeddedZookeeper();
@@ -43,7 +42,6 @@ public class IntegrationTest {
 
         @BeforeAll
         public static void before() {
-            kafka.start();
             Startables.deepStart(Stream.of(kafka, postgres));
         }
 

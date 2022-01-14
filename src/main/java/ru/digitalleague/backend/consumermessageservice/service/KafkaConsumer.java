@@ -50,7 +50,6 @@ public class KafkaConsumer{
                 .setPrettyPrinting()
                 .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
                 .create();
-        UserModel user1 = gson.fromJson(record.value(), UserModel.class);
         UserModel user = gson.fromJson(record.value(), UserModel.class);
 
         LOG.info("Getting massages from kafka={}",record);
@@ -60,10 +59,10 @@ public class KafkaConsumer{
             requestId = new String(c.value());
         }
         Map<Boolean, List<OrdersModel>> booleanListMap = dbService.chekOrderStatus(user);
+        dbService.addUserToOrdersItemAndSaveToPostgres(user,booleanListMap.get(true));
         String finalRequestId = requestId;
         booleanListMap.get(true)
                 .forEach(s -> {
-            dbService.addUserToOrdersItemAndSavetoPostgres(user1, s);
                     try {
                         kafkaProducer.sendMessages(new Answer("OK", timestamp, finalRequestId, s.getUuid()));
                     } catch (ExecutionException e) {

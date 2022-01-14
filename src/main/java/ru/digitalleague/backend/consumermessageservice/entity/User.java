@@ -1,9 +1,7 @@
 package ru.digitalleague.backend.consumermessageservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.Accessors;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -42,14 +40,5 @@ public class User {
 
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userFirstName='" + userFirstName + '\'' +
-                ", userLastName='" + userLastName + '\'' +
-                ", ordersItems=" + ordersItems +
-                '}';
-    }
 
 }

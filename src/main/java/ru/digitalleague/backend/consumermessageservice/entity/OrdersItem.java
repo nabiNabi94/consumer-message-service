@@ -26,7 +26,7 @@ public class OrdersItem implements Serializable {
     private LocalDate dateCreate;
     private String status;
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User users;
 

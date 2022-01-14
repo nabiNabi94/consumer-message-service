@@ -39,15 +39,21 @@ public class DBService {
 
     }
 
-    public void addUserToOrdersItemAndSavetoPostgres(UserModel userModel, OrdersModel ordersModel) {
+    public void addUserToOrdersItemAndSaveToPostgres(UserModel userModel,List<OrdersModel> ordersModels) {
 //        userModel.getOrdersItems().clear();
             User user = new User();
             user.setUserLastName(userModel.getUserLastName())
-                            .setUserFirstName(userModel.getUserFirstName())
-                                    .setOrdersItems(mapper.mapList(userModel.getOrdersItems(), OrdersItem.class));
+                            .setUserFirstName(userModel.getUserFirstName());
+        List<OrdersItem> ordersItems = mapper.mapList(ordersModels, OrdersItem.class);
+        ordersItems.forEach(user::addOrder);
+        try {
+            User save = userRepository.save(user);
+            LOG.info("Save to database user={} orderItems={}",save,save.getOrdersItems());
+            }catch (Exception e){
+                LOG.trace("Exception save to DB={}",e.getMessage());
+            }
 
-            userRepository.save(user);
-            LOG.info("Save to database user={}",user);
+
     }
 
 }
